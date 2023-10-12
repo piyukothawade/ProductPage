@@ -1,8 +1,112 @@
 import styled from "styled-components";
+import { useCartContext } from "./Context/CartContext";
+import CartItem from "./components/CartItem";
+import { NavLink } from "react-router-dom";
+import FormatPrice from "./Helpers/FormatPrice";
+
+// Import your login context and the navigate hook
+import { useLoginContext } from "./Context/LoginContext"; 
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
-  return <Wrapper></Wrapper>;
+    const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+
+    // Fetch the login status and navigate hook
+    const { isLoggedIn } = useLoginContext();
+    const navigate = useNavigate();
+
+    const handleCheckout = () => {
+        if (!isLoggedIn) {
+            navigate("/login");
+        } else {
+            navigate("/buy");
+        }
+    };
+
+    if (cart.length === 0) {
+        return (
+            <EmptyDiv>
+                <h3>No Item in Cart</h3>
+            </EmptyDiv>
+        );
+    }
+
+    return (
+        <Wrapper>
+            <div className="container">
+                <div className="cart_heading grid grid-five-column">
+                    <p>Item</p>
+                    <p className="cart-hide">Price</p>
+                    <p>Quantity</p>
+                    <p className="cart-hide">Subtotal</p>
+                    <p>Remove</p>
+                </div>
+                <hr />
+
+                <div className="cart-item">
+                    {cart.map((curElem) => {
+                        return <CartItem key={curElem.product_id} {...curElem} />;
+                    })}
+                </div>
+
+                <hr />
+
+                <div className="cart-two-button">
+                    <NavLink to="/products">
+                        <button className="normalBtn">continue Shopping</button>
+                    </NavLink>
+
+                    <button className="normalBtn btn-clear" onClick={clearCart}>
+                        Clear Cart
+                    </button>
+                </div>
+
+                <div className="order-total--amount">
+                    <div className="order-total--subdata">
+                      <div className="summary">Order Summary</div>
+                        <div>
+                            <p>subtotal</p>
+                            <p>
+                                <FormatPrice price={total_price} />
+                            </p>
+                        </div>
+                        <div>
+                            <p>Shipping Fee:</p>
+                            <p>
+                                <FormatPrice price={shipping_fee} />
+                            </p>
+                        </div>
+                        <hr />
+                        <div>
+                            <p>order total:</p>
+                            <p>
+                                <FormatPrice price={shipping_fee + total_price} />
+                            </p>
+                        </div>
+                    </div>
+                    <div className="buy-btn">
+                        <button className="normalBtn buy" onClick={handleCheckout}>
+                            Checkout
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </Wrapper>
+    );
 };
+
+const EmptyDiv = styled.div`
+display: grid;
+place-items: center;
+height: 50vh;
+
+h3{
+  font-size: 4.2rem;
+  text-transform: capitalize;
+  font-weight: 300;
+}
+
+`;
 
 const Wrapper = styled.section`
   padding: 9rem 0;
@@ -15,6 +119,8 @@ const Wrapper = styled.section`
     grid-template-columns: repeat(4, 1fr) 0.3fr;
     text-align: center;
     align-items: center;
+    padding-right: 10rem;
+    padding-left: 7rem;
   }
   .cart-heading {
     text-align: center;
@@ -80,14 +186,16 @@ const Wrapper = styled.section`
   }
 
   .cart-two-button {
+    padding : 0 6rem ;
     margin-top: 2rem;
     display: flex;
     justify-content: space-between;
 
     .btn-clear {
-      background-color: #e74c3c;
+      background-color: #4682A9;
     }
   }
+  
 
   .amount-toggle {
     display: flex;
@@ -104,17 +212,27 @@ const Wrapper = styled.section`
 
     .amount-style {
       font-size: 2.4rem;
-      color: ${({ theme }) => theme.colors.btn};
+      color: #4682A9;
     }
   }
 
   .remove_icon {
     font-size: 1.6rem;
-    color: #e74c3c;
+    color: #EC53B0;
     cursor: pointer;
+  }
+  .summary{
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    color: #EC53B0;
+    font-size: 20px;
+    font-weight:700;
   }
 
   .order-total--amount {
+    padding-right: 6rem;
     width: 100%;
     margin: 4.8rem 0;
     text-transform: capitalize;
@@ -144,6 +262,12 @@ const Wrapper = styled.section`
       font-weight: bold;
       color: ${({ theme }) => theme.colors.heading};
     }
+  }
+  .buy-btn {
+    padding-left: 12rem;
+  }
+  .buy{
+    padding: 1rem 7rem;
   }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {

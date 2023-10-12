@@ -84,9 +84,26 @@ li {
 
 ${"" /* resuable code section  */}
 
-.container {
-  max-width: 120rem;
+.container1 {
+  max-width: 100%;
   margin: 0 auto;
+  background-color:#FFB6D9;
+  padding: 50px;
+}
+
+.container1 h1{
+  font-family: 'Sawarabi Mincho', serif;
+  color: #fff;
+  padding: 10px 5px;
+}
+.container1 p{
+  font-family: 'Sacramento', cursive;
+  color: #fff;
+  padding: 5px 5px;
+}
+.container1 p span{
+  font-family: 'Sawarabi Mincho', serif;
+  color: #EC53B0;
 }
 
 .grid {
@@ -177,4 +194,10 @@ input, textarea{
         }
     }
 
+
+  
+
+    
+
 `;
+

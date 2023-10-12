@@ -1,0 +1,160 @@
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #F5F5F5;
+    padding: 20px 40px;
+    box-shadow: 0 5px 15px ;
+}
+.logo{
+    height: 100px;
+    width: 200px;
+    padding-left: 10px;
+}
+
+#navbar1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#navbar1 li{
+    list-style: none;
+    padding: 0 20px;
+    position: relative;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #4F4557;
+    transition: 0.3s ease-in-out;
+    
+
+}
+#navbar1 li a{
+    color: #4F4557;
+    font-family: 'Sacramento', cursive;
+}
+
+#navbar1 li a:hover,
+#navbar1 li a.active{
+    color: #EC53B0;
+}
+
+#navbar1 li a:hover::after,
+#navbar1 li a.active::after{
+    content:"";
+    width: 30%;
+    height: 2px;
+    background: #EC53B0;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+
+}
+#mobile{
+    display: none;
+}
+#mobile i{
+    color: #4F4557;
+    align-items: center;
+}
+
+@media screen and (max-width:769px){
+    #navbar1{
+        
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: fixed;
+        top: 140px;
+        right: -300px;
+        width: 300px;
+        height: 100vh;
+        background-color: #F5F5F5;
+        box-shadow: 0 40px 60px rgba(0, 0, 0, 0.1);
+        padding: 40px 0 0 10px;
+        transition: 0.3s ease-in-out;;
+    }
+
+    #navbar1.active{
+        right: 0px;
+    }
+
+    #navbar1 li{
+        font-size: 20px;
+        margin-bottom: 25px;
+
+    }
+
+    #mobile{
+        display: block;
+    }
+
+    #mobile i{
+        font-size: 24px;
+        cursor:pointer;
+    }
+}
+
+/* Updated styles in styles.css */
+.loginBtn {
+    float: right;
+    margin: 10px;
+    padding: 5px 15px;
+    background-color: #4682A9 ;  /* Background color */
+    color: white; 
+    border-radius: 5%;           /* Text color */
+    border: none;            /* Removes default border */
+    cursor: pointer; 
+    font-family: 'Sacramento', cursive;     /* Changes cursor to hand when hovering over button */
+  }
+  
+  /* Add a hover effect */
+  .loginBtn:hover  {
+    background-color: #7091F5; /* Darker shade of blue when hovering */
+  }
+
+  .normalBtn{
+    float: left;
+    margin: 10px;
+    padding: 5px 15px;
+    background-color: #EC53B0;  /* Background color */
+    color: white; 
+    border-radius: 5%;           /* Text color */
+    border: none;            /* Removes default border */
+    cursor: pointer; 
+    font-family: 'Sacramento', cursive;        /* Changes cursor to hand when hovering over button */
+  }
+  
+  /* Add a hover effect */
+  .normalBtn:hover  {
+    background-color: #FFC7EA; /* Darker shade of blue when hovering */
+  }
+
+  .cart-trolley--link {
+    position: relative;
+
+    .cart-trolley {
+      position: relative;
+      font-size: 3.2rem;
+    }
+
+    .cart-total--item {
+      width: 2.4rem;
+      height: 2.4rem;
+      position: absolute;
+      background-color:#4F4557 ;
+      color: #4F4557;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      top: -70%;
+      left: 70%;
+      background-color: #EC53B0;
+    }
+  }
+
+
+
+  
+  

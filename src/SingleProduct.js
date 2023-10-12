@@ -1,6 +1,119 @@
 import styled from "styled-components";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { useProductContext } from "./Context/ProductContext";
+import PageNavigation from "./components/PageNavigation";
+import { Container } from "./components/Container";
+import FormatPrice from "./Helpers/FormatPrice";
+import {FiCheckSquare} from "react-icons/fi";
+import {TbTruckDelivery} from "react-icons/tb";
+import {TbReplace} from "react-icons/tb";
+import {MdFaceRetouchingNatural} from "react-icons/md";
+import Star from "./components/Star";
 
-return <Wrapper></Wrapper>;
+import AddToCart from "./components/AddToCart";
+
+//const API = "https://localhost:44320/api/Product";
+//const API = "http://localhost:5000/api/products";
+const API = "https://restapi-production-acb3.up.railway.app/api/products";
+
+const SingleProduct = () => {
+  const {getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
+  //console.log("~ file: SingleProduct.js ~ line 10 ~ SingleProduct ~ singleProduct",
+  //singleProduct
+  //);
+  const { id } = useParams();
+
+  const {
+    product_id,
+    name,
+    description,
+    discount,
+    available_units,
+    size,
+    color,
+    weight,
+    price, 
+    category,
+    image,
+    reviews,
+    rating,
+    company,
+
+  } = singleProduct;
+
+  
+  useEffect(() =>{
+    getSingleProduct(`${API}/${id}`);
+
+  }, []);
+
+  if(isSingleLoading){
+    return <div className="page_loading">Loading....</div>
+  }
+
+  return (
+    <Wrapper>
+      <PageNavigation title={category}/>
+      <Container className="container">
+        <div className="grid grid-two-column">
+          <div className="product_image">
+            <img src={image} alt="Product Image" ></img>
+          </div>
+
+          <div className="product-data">
+            <h2>{name}</h2>
+            <Star rating={rating} reviews={reviews}/>
+            
+            <p className="product-data-price">MRP:
+            <del>
+              <FormatPrice price={price + 500}/>
+            </del>
+            </p>
+            <p className="product-data-price product-data-real-price">
+              Deal of the Day: <FormatPrice price={price}/>
+            </p>
+            <p>{description}</p>
+            <p>color : <span>{color}</span></p>
+
+            <div className="product-data-warranty">
+              <div className="product-warranty-data">
+                <TbTruckDelivery className="warranty-icon"/>
+                <p>Free Delivery</p>
+              </div>
+              <div className="product-warranty-data">
+                <TbReplace className="warranty-icon"/>
+                <p>10 Days Replacement</p>
+              </div>
+              
+              <div className="product-warranty-data">
+                <FiCheckSquare className="warranty-icon"/>
+                <p>Best Quality</p>
+                
+              </div>
+              <div className="product-warranty-data">
+                <MdFaceRetouchingNatural className="warranty-icon"/>
+                <p>No harm to skin</p>
+                
+              </div>
+            </div>
+
+            <div className="product-data-info">
+                <p>Available: <span>{available_units > 0 ? "In Stock" : "Not Available"}</span></p>
+                <p> ID : <span>{product_id}</span></p>
+                <p> Company : <span>{company}</span></p>
+              </div>
+              <hr/>
+
+              {available_units > 0 && <AddToCart product={singleProduct} />}
+
+          </div>
+        </div>
+      </Container>
+    </Wrapper>
+  );
+
+};
 
 const Wrapper = styled.section`
   .container {
@@ -10,7 +123,7 @@ const Wrapper = styled.section`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 2rem;
 
     .product-data-warranty {
@@ -20,6 +133,7 @@ const Wrapper = styled.section`
       align-items: center;
       border-bottom: 1px solid #ccc;
       margin-bottom: 1rem;
+      padding-right: 170px;
 
       .product-warranty-data {
         text-align: center;
@@ -64,11 +178,20 @@ const Wrapper = styled.section`
     }
   }
 
-  .product-images {
+  .product_image {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    
   }
+  img{
+    height: 50%;
+    width: auto;
+    padding-left: 150px;
+  }
+
+  
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     padding: 0 2.4rem;

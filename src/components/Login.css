@@ -1,0 +1,131 @@
+
+
+ /* Hide the default checkbox */
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom box */
+input[type="checkbox"] + label {
+    position: relative;
+    padding-left: 25px; /* Space for the custom checkbox */
+    cursor: pointer;
+}
+
+input[type="checkbox"] + label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;  /* Adjust to reduce/enlarge the checkbox size */
+    height: 15px; /* Adjust to reduce/enlarge the checkbox size */
+    border: 2px solid #000;
+    background-color: #fff;
+}
+
+/* Style for checked state */
+input[type="checkbox"]:checked + label:before {
+    background-color: #000; /* Color when checked */
+}
+
+/* Optional: Add a checkmark for the checked state */
+input[type="checkbox"]:checked + label:after {
+    content: "\2713"; /* Unicode checkmark character */
+    position: absolute;
+    left: 4px;
+    top: -1px;
+    font-size: 16px;
+    color: #fff;
+}
+
+
+ .check-div{
+    display: flex;
+    align-items: center;
+    margin: auto;
+    border-radius: 6px;
+    padding: 10px 220px;
+    
+ }
+ .forgot-password{
+    display: flex;
+    padding-left: 230px;
+    margin-top: 27px;
+    color: #4F4557;
+    font-size: 18px;
+ }
+
+ .forgot-password span {
+    padding-left: 5px;
+    color: #4c00b4;
+    cursor: pointer;
+ }
+
+ .line-with-text {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    font-size: 15px;
+    color: #4F4557;
+
+}
+
+.line-with-text span {
+    flex-grow: 1;
+    position: relative;
+}
+
+.line-with-text span:before, 
+.line-with-text span:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 50%;
+    height: 1px;
+    background-color: #4F4557; /* Change color as per your requirement */
+}
+
+.line-with-text span:before {
+    right: 50%;
+    margin-right: 70px;
+    width: 300px; /* Change margin as per your requirement */
+
+}
+
+.line-with-text span:after {
+    left: 55%;
+    margin-left: 22px;
+    width: 300px; /* Change margin as per your requirement */
+}
+
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    
+
+}
+
+.new-btn{
+   
+    margin: 10px;
+    padding: 5px 15px;
+    background-color: #fff;  /* Background color */
+    color: #4F4557; 
+    border-radius: 5%;           /* Text color */
+    border: none;            /* Removes default border */
+    cursor: pointer; 
+    font-family: 'Sacramento', cursive;
+    border: 2px solid;
+    cursor: pointer;
+    border-radius: 10%;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);  /* Horizontal offset, vertical offset, blur radius, shadow color */
+
+}
+
+.new-btn:hover  {
+    background-color: #6A6373;
+    color: #fff; /* Darker shade of blue when hovering */
+  }
