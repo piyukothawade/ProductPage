@@ -48,7 +48,7 @@ h3 {
 }
 
 img {
-    min-width: 10rem;
+    width: 10rem;
     height: 10rem;
 }
 
@@ -59,17 +59,21 @@ img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 
 
-@media (max-width: ${({ theme }) => theme.media.mobile}){
-    .brand-section-slider{
-        margin-top: 3.2rem;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        text-align: center;
+@media (max-width: ${({ theme }) => theme.media.mobile}) {
+    img {
+        width: 8rem;  // Reduced size for smaller screens
+        height: 8rem;
+    }
+    
+    .brand-section-slider {
+        justify-content: center;   // Center icons on smaller screens
+        gap: 1rem;   // Adjust the gap between logos for mobile view
     }
 }
 `;

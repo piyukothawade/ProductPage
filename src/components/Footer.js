@@ -96,7 +96,6 @@ const Wrapper = styled.section`
     background-color: #F5F5F5;
     border-radius: 1rem;
     box-shadow: ${({ theme }) => theme.colors.shadowSupport};
-    transform: translateY(50%);
 
     .grid div:last-child{
         justify-self: end;
@@ -142,7 +141,7 @@ footer{
             .icons{
                 color: #F5F5F5;
                 font-size: 2.4rem;
-                position: relative;
+                
                 cursor: pointer; 
             }
         }
@@ -168,17 +167,23 @@ footer{
 @media (max-width: ${({ theme }) => theme.media.mobile}){
     .contct-short{
         max-width: 80vw;
-        margin: 4.8rem auto;
-        transform: translateY(0%);
+        margin: 4.8rem 2.4rem auto;
+        padding: 2rem 1rem;
         text-align: center;
 
-        .grid div: last-child{
-            justify-self: center;
+        h3 {
+            font-size: 1.4rem;
         }
     }
 
     footer{
-        padding: 9rem 0 9rem 0;
+        padding: 5rem 1rem;
+        h2, h3{
+            font-size: 1.6rem;
+        }
+        .p1, span, p {
+            font-size: 1.6rem;
+        }
     }
 
     .footer-bottom--section{

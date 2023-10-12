@@ -50,6 +50,8 @@ padding: 10rem 0;
 
 .grid{
     gap: 4.8rem;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .services-1,
@@ -81,8 +83,7 @@ padding: 10rem 0;
         border-radius: 2rem;
         box-shadow: rgba(0, 0, 0, 0, 0.05) 0px 1px 2px 0px;
 
-    }
-        
+    }   
 
     }
 
@@ -110,10 +111,32 @@ h3{
     background-color: #fff;
     color: #5138ee;
 }
+@media (max-width: 768px) {
+    padding: 5rem 1rem;
+
+    .services-1,
+    .services-2,
+    .services-3 {
+      height: auto;
+      padding: 2rem;
+    }
+
+    .services-2 .services-column-2 {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .icon {
+      width: 6rem;
+      height: 6rem;
+    }
+    
+    h3 {
+      font-size: 1.6rem;
+    }
+  }
+`;
 
 
-
-
-`
 
 export default Services

@@ -17,6 +17,12 @@ import AddToCart from "./components/AddToCart";
 //const API = "http://localhost:5000/api/products";
 const API = "https://restapi-production-acb3.up.railway.app/api/products";
 
+const breakpoints = {
+  mobile: '600px',
+  tablet: '900px',
+  desktop: '1200px',
+}
+
 const SingleProduct = () => {
   const {getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
   //console.log("~ file: SingleProduct.js ~ line 10 ~ SingleProduct ~ singleProduct",
@@ -119,12 +125,19 @@ const Wrapper = styled.section`
   .container {
     padding: 9rem 0;
   }
+
+  .grid {
+    display: flex;  // Using flex instead of grid
+    flex-direction: column;  // Stack the children vertically
+    align-items: center;  // Center the children horizontally
+  }
   .product-data {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 2rem;
+    width: 100%;
 
     .product-data-warranty {
       width: 100%;
@@ -181,20 +194,23 @@ const Wrapper = styled.section`
   .product_image {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    padding: 0 150px;
     
   }
   img{
-    height: 50%;
-    width: auto;
-    padding-left: 150px;
+    height: 400px;
+    width: 400px;
+    
   }
 
   
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     padding: 0 2.4rem;
+
+    
   }
 `;
 

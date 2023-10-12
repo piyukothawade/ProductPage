@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import SignImg from './SignImg';
 import Form from 'react-bootstrap/Form';
 import "./Forgot.css";
+import { NavLink } from 'react-router-dom';
 
 const Forgot = () => {
     const [inpVal, setInpVal] = useState({ email: "", newPassword: "" });
@@ -74,7 +75,8 @@ const Forgot = () => {
                             </div>
                         </>
                     ) : (
-                        <p>Password reset successful! Please <a href="/login">login</a>.</p>
+                        <p>Password reset successful! Please <NavLink to="/login">login</NavLink>.</p>
+
                     )}
                 </Form>
                 <SignImg />

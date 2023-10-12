@@ -49,10 +49,13 @@ input[type="checkbox"]:checked + label:after {
  }
  .forgot-password{
     display: flex;
-    padding-left: 230px;
+    justify-content: center;
+    width: 100%;
+    /* padding-left: 230px; */
     margin-top: 27px;
     color: #4F4557;
     font-size: 18px;
+    text-align: center;
  }
 
  .forgot-password span {
