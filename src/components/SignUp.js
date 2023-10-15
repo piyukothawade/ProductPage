@@ -60,9 +60,7 @@ const SignUp = () => {
             alert("Phone number is required")
         } else if(phone.length !== 10){
             alert("Please Enter a valid phone number")
-        } else if(date === ""){
-            alert("Date field is required")
-        } else if(password === ""){
+        }else if(password === ""){
             alert("Password field is required")
         }else if(password.length < 5){
             alert("Password should be greater than 5 characters")
@@ -117,10 +115,7 @@ const SignUp = () => {
                         <Form.Control type="tel" name="phone" onChange={getdata} placeholder="Enter Phone number" required />
                     </Form.Group>
 
-                    <Form.Group className="mb-3 col-lg-6 inp" controlId="formBasicEmail">
-                        {/* <Form.Label>Email address</Form.Label> */}
-                        <Form.Control onChange={getdata} name="date" type="date" required/>
-                    </Form.Group>
+            
 
 
                     <Form.Group className="mb-3 col-lg-6 inp" controlId="formBasicPassword">

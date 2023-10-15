@@ -18,7 +18,11 @@ function Navbar() {
     const [clicked, setClicked] = useState(false);
     const { total_item } = useCartContext();
 
-    console.log("Is Logged In:", isLoggedIn);
+    const hideNavbar = () => {
+        setClicked(false);
+    }
+
+    // console.log("Is Logged In:", isLoggedIn);
 
 
     const handleLogout = () => {
@@ -34,14 +38,16 @@ function Navbar() {
     return (
         <>
             <nav>
-                <NavLink to="/"><img className="logo" src="./images/logo1.png" alt="logo" /></NavLink>
+                <NavLink to="/" onClick={hideNavbar}>
+                    <img className="logo" src="./images/logo1.png" alt="logo" /></NavLink>
                 <div>
                     <ul id="navbar1" className={clicked ? "navbar1 active" : "navbar1"}>
-                        <li><NavLink exact to="/" activeClassName="active">Home</NavLink></li>
-                        <li><NavLink to="/about" activeClassName="active">About</NavLink></li>
-                        <li><NavLink to="/products" activeClassName="active">Products</NavLink></li>
-                        <li><NavLink to="/contact" activeClassName="active">Contact</NavLink></li>
+                        <li><NavLink exact to="/" onClick={hideNavbar} activeClassName="active">Home</NavLink></li>
+                        <li><NavLink to="/about" onClick={hideNavbar}  activeClassName="active">About</NavLink></li>
+                        <li><NavLink to="/products" onClick={hideNavbar} activeClassName="active">Products</NavLink></li>
+                        <li><NavLink to="/contact" onClick={hideNavbar} activeClassName="active">Contact</NavLink></li>
                         <li>
+                            <div className="name">
 
                             {isLoggedIn && user && (
                                 <div>
@@ -49,19 +55,23 @@ function Navbar() {
                                     {user.Fname} {user.Lname}
                                 </div>
                             )}
+                            </div>
 
-                            {isLoggedIn ? (
-                                // Show Logout when user is logged in
-                                <button className="loginBtn" onClick={handleLogout}>Logout</button>
-                            ) : (
-                                // Show Login when user is not logged in
-                                <NavLink to="/login" activeClassName="active">
-                                    <LoginButton className="normalBtn">Login</LoginButton>
-                                </NavLink>
-                            )}
+                            <div className="buttn">
+
+                                {isLoggedIn ? (
+                                    // Show Logout when user is logged in
+                                    <button className="loginBtn" onClick={handleLogout}>Logout</button>
+                                ) : (
+                                    // Show Login when user is not logged in
+                                    <NavLink to="/login" onClick={hideNavbar} activeClassName="active">
+                                        <LoginButton onClick={hideNavbar} className="normalBtn">Login</LoginButton>
+                                    </NavLink>
+                                )}
+                            </div>
                         </li>
                         <li>
-                            <NavLink to="/cart" className="navbar-link cart-trolley--link">
+                            <NavLink to="/cart" onClick={hideNavbar} className="navbar-link cart-trolley--link">
                                 <FiShoppingCart className="cart-trolley" />
                                 <span className="cart-total--item"> {total_item} </span>
                             </NavLink>

@@ -10,7 +10,6 @@ import {TbTruckDelivery} from "react-icons/tb";
 import {TbReplace} from "react-icons/tb";
 import {MdFaceRetouchingNatural} from "react-icons/md";
 import Star from "./components/Star";
-
 import AddToCart from "./components/AddToCart";
 
 //const API = "https://localhost:44320/api/Product";
@@ -111,7 +110,10 @@ const SingleProduct = () => {
               </div>
               <hr/>
 
+              
+
               {available_units > 0 && <AddToCart product={singleProduct} />}
+            
 
           </div>
         </div>
@@ -129,24 +131,43 @@ const Wrapper = styled.section`
   .grid {
     display: flex;  // Using flex instead of grid
     flex-direction: column;  // Stack the children vertically
-    align-items: center;  // Center the children horizontally
+    align-items: center;  // Center the children horizontall
+    gap: 2rem;
+    
+    @media (min-width: ${breakpoints.desktop}) { 
+      flex-direction: row;  
+      justify-content: space-between; 
+      align-items: flex-start;
+      gap: 20rem;
+    }
   }
   .product-data {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    
     gap: 2rem;
     width: 100%;
+
+    @media (min-width: ${breakpoints.desktop}) {
+      align-items: flex-start;
+    }
 
     .product-data-warranty {
       width: 100%;
       display: flex;
+      flex-direction: column;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #ccc;
       margin-bottom: 1rem;
-      padding-right: 170px;
+      padding-right: 0;
+
+      @media (min-width: ${breakpoints.desktop}) {
+        flex-direction: row;  // Change to row direction for desktop
+        align-items: center;  // Revert the alignment for desktop
+        padding-right: 170px;  // Apply padding for desktop
+      }
 
       .product-warranty-data {
         text-align: center;
@@ -188,20 +209,38 @@ const Wrapper = styled.section`
       /* height: 0.2rem; */
       border: 0.1rem solid #000;
       color: red;
+      margin-top: -1rem;
+
     }
   }
+  addtocart {
+    margin-top: -5rem;  /* Adjust this value as needed */
+  }
+
 
   .product_image {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 0 150px;
-    
-  }
-  img{
-    height: 400px;
-    width: 400px;
+    padding: 0;
+
+    img {
+      height: auto;
+      max-height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+
+    @media (max-width: ${({ theme }) => theme.media.mobile}) {
+      width: 80%;
+      maragin: 0 auto;
+    }
+
+    @media (min-width: ${breakpoints.desktop}) {
+      width: 45%;
+      padding: 0;
+    }
     
   }
 

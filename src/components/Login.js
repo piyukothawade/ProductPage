@@ -79,7 +79,12 @@ const Login = () => {
                                 </button>
                             </div>     
                         </Form>
-                        <p className='mt-3 forgot-password'>Forgot Password? <span> <NavLink to="/forgot">Click here</NavLink> </span></p>
+                        <p className='mt-3 forgot-password'>Forgot Password? 
+                        <span> 
+                            <NavLink
+                             to="/forgot">Click here
+                             </NavLink> 
+                             </span></p>
                         <div className="line-with-text">
                             <span>New to BeautyBliss?</span>
                         </div>

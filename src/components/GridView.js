@@ -19,7 +19,8 @@ const Wrapper = styled.section`
   padding: 9rem 3rem;
 
   .container {
-    max-width: 120rem;
+    width: 100%;
+    max-width: 100%;
   }
 
   .grid {
@@ -53,8 +54,9 @@ const Wrapper = styled.section`
     }
     img {
       max-width: 90%;
+      width: 90%;
       margin-top: 1.5rem;
-      height: 20rem;
+      height: 300px;
       transition: all 0.2s linear;
     }
   }
@@ -62,6 +64,7 @@ const Wrapper = styled.section`
   .card {
     background-color: ${({ theme }) => theme.colors.bg};
     border-radius: 1rem;
+    width: 100%;
 
     .card-data {
       padding: 0 1rem;
@@ -107,6 +110,7 @@ const Wrapper = styled.section`
       }
     }
   }
+  
 `;
 
 export default GridView;

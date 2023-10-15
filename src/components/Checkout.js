@@ -278,10 +278,13 @@ const Checkout = () => {
                         </Form.Group>
                     )}
 
-                  <button className="normalBtn submit-btn" onClick={handlePayment}>
-                      Buy
-                  </button>
+                  
             </Form>
+            <div className='buy-btn'>
+            <button className="normalBtn submit-btn" onClick={handlePayment}>
+                      Buy
+            </button>
+            </div>
         </div>
 
     </div>

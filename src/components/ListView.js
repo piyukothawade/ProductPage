@@ -46,7 +46,7 @@ const Wrapper = styled.section`
   }
 
   figure {
-    width: auto;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +73,7 @@ const Wrapper = styled.section`
     img {
       max-width: 90%;
       margin-top: 1.5rem;
-      height: 20rem;
+      height: 300px;
       transition: all 0.2s linear;
     }
   }
@@ -83,6 +83,7 @@ const Wrapper = styled.section`
 
     .card-data {
       padding: 0 2rem;
+      margin-top: 6rem;
     }
 
     h3 {

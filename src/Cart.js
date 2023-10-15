@@ -84,7 +84,7 @@ const Cart = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="buy-btn">
+                    <div className="check-btn">
                         <button className="normalBtn buy" onClick={handleCheckout}>
                             Checkout
                         </button>
@@ -263,8 +263,8 @@ const Wrapper = styled.section`
       color: ${({ theme }) => theme.colors.heading};
     }
   }
-  .buy-btn {
-    padding-left: 12rem;
+  .check-btn {
+    padding-left: 10rem;
   }
   .buy{
     padding: 1rem 7rem;

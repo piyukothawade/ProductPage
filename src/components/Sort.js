@@ -87,6 +87,12 @@ const Wrapper = styled.section`
       padding: 10px;
     }
   }
+  @media (max-width: 768px) {
+    .sorting-list--grid {
+      display: none;
+    }
+  }
+    
 `;
 
 export default Sort

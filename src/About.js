@@ -23,7 +23,7 @@ const About = () => {
           niche and cult brands and expert advice and videos, coupled with our understanding of the needs and 
           preferences of the consumers,and On-Trend and Kiosk Stores, an ever growing online 
           community for beauty buffs, and a Beauty Helpline, we go out of our way to give you only the very best. 
-          With 2400+, 100% authentic brands Nykaa offers a well curated comprehensive selection of makeup, skincare, 
+          With 2400+, 100% authentic brands we offer a well curated comprehensive selection of makeup, skincare, 
           haircare, bath and body, fragrance, grooming appliances, personal care, and health and wellness categories.
          </p>
          <div className='grid grid-two-column'>

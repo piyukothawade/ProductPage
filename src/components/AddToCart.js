@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useCartContext } from '../Context/CartContext';
 
-const AddToCart = ({ product }) => {
+const AddToCart = ({ product, showControls = true }) => {
     const { AddToCart } = useCartContext();
     
     const { product_id, available_units } = product;
@@ -21,20 +21,20 @@ const AddToCart = ({ product }) => {
     
   return (
     <Wrapper>
+    {showControls && (
         <CartAmountToggle
-
-        amount={amount}
-        setDecrease = {setDecrease}
-        setIncrease = {setIncrease}
+            amount={amount}
+            setDecrease={setDecrease}
+            setIncrease={setIncrease}
         />
-
-        <NavLink to="/cart" onClick={() => AddToCart(product_id, amount, product )}>
-
+    )}
+    
+    <NavLink to="/cart" onClick={() => AddToCart(product_id, amount, product)}>
         <button className="normalBtn">
-          Add to Cart
+            Add to Cart
         </button>
-        </NavLink>
-    </Wrapper>
+    </NavLink>
+</Wrapper>
   )
 }
 

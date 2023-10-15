@@ -85,7 +85,7 @@ const FilterSection = () => {
       </div>
 
       <div className='filter-clear'> 
-      <button className='btn normalBtn' 
+      <button className='filter-btn normalBtn' 
       onClick={clearFilters}>
         Clear Filters
         </button>
@@ -140,6 +140,15 @@ h3 {
         color: ${({ theme }) => theme.colors.btn};
       }
     }
+    .filter-btn  {
+      background-color: #4682A9 !important;
+      color: #000 !important;
+      padding: 10px 20px !important;  
+      font-size: 18px !important;     
+      border-radius: 5px !important;  
+    }
+    
+    
 
     .active {
       border-bottom: 1px solid #000;

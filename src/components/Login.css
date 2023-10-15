@@ -77,36 +77,18 @@ input[type="checkbox"]:checked + label:after {
 .line-with-text span {
     flex-grow: 1;
     position: relative;
+    padding: 10px 20px;
 }
 
-.line-with-text span:before, 
-.line-with-text span:after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    width: 50%;
-    height: 1px;
-    background-color: #4F4557; /* Change color as per your requirement */
-}
 
-.line-with-text span:before {
-    right: 50%;
-    margin-right: 70px;
-    width: 300px; /* Change margin as per your requirement */
-
-}
-
-.line-with-text span:after {
-    left: 55%;
-    margin-left: 22px;
-    width: 300px; /* Change margin as per your requirement */
-}
 
 .btn-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
+    padding: 15px 0;
+    margin-bottom: 12rem;
+
     
 
 }
@@ -132,3 +114,9 @@ input[type="checkbox"]:checked + label:after {
     background-color: #6A6373;
     color: #fff; /* Darker shade of blue when hovering */
   }
+
+  @media (max-width: 768px) {
+    .forgot-password {
+        font-size: 10px; /* Or any size that looks appropriate on mobile devices */
+    }
+}

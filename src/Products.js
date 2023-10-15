@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import styled from "styled-components";
 import Sort from "./components/Sort";
@@ -43,17 +44,25 @@ const Wrapper = styled.section`
 
   .toggle-filters {
     display: none;  // Hidden by default
-    background-color: #333;
-    color: #fff;
-    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.7);  // Making it white with some transparency
+    color: #333;  // Setting text color to dark
+    padding: 10px 15px;  // Padding around the button
+    width: auto;  // Adjust width based on content
     border: none;
     cursor: pointer;
+    margin-top: 2rem;
     margin-bottom: 1rem;
-  }
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);  // Adding a shadow to the button
+    border-radius: 5px;  // Rounding the button corners for aesthetics
+    transition: 0.3s ease;  // Smooth transition effect on hover
 
-  .filter-section {
-    display: block; // Displayed on larger screens
-  }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.85);  // Darken a bit on hover for effect
+    }
+}
+
+
+  
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .grid-filter-column {

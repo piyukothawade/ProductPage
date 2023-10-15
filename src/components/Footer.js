@@ -13,7 +13,7 @@ const Footer = () => {
                 <h3>Talk to us today</h3>   
             </div>
             <div>
-            <NavLink to="/contact">
+            <NavLink to="/signUp">
             <button className="normalBtn">
                 Get Started
             </button>
@@ -68,12 +68,15 @@ const Footer = () => {
         <div className="footer-bottom--section">
 
             <hr/>
-            <div className="container grid grid-two-column">
+            <div className="container grid grid-three-column">
                 <p>@{new Date().getFullYear()} BeautyBliss. All Rights Reserved</p>
                 <div>
-                   <p>PRIVACY POLICY</p> 
-                   <p>TERMS & CONDITIONS</p>
+                   <p>PRIVACY POLICY  </p> 
                 </div>
+                <div>
+                    <p>TERMS & CONDITIONS </p>
+                    </div>
+                
 
             </div>
         </div>
@@ -85,12 +88,10 @@ const Footer = () => {
 };
 
 const Wrapper = styled.section`
-.iSIFGq {
-    margin: 0;
-}
+
 
 .contact-short{
-    max-width: 60vw;
+    max-width: 40vw;
     margin: auto;
     padding: 5rem 10rem;
     background-color: #F5F5F5;
@@ -104,7 +105,7 @@ const Wrapper = styled.section`
 }
 
 footer{
-    padding: 14rem 10rem 9rem 10rem;
+    padding: 10rem 0 5rem 0;
     background-color: #4682A9;
     h2{
         color: #EC53B0;
@@ -113,7 +114,7 @@ footer{
     }
     .p1{
         color: #fff;
-        font-family: 'Sacramento', cursive;
+       
     }
     span{
         color:#EC53B0;
@@ -128,6 +129,8 @@ footer{
     p{
         color: ${({ theme }) => theme.colors.white};
     }
+   
+    
 
     .footer-social--icons{
         display: flex;
@@ -151,25 +154,36 @@ footer{
 
 .footer-bottom--section{
 
-    padding-top: 9rem;
-    padding-left: 10rem;
+    padding-top: 2rem;
+    padding-left: 0;
 
     hr{
         margin-bottom: 2rem;
         color: #fff;
         height: 0.1px;
+        width: 100%;
     }
+
     p{
         color: #fff;
     }
 }
 
 @media (max-width: ${({ theme }) => theme.media.mobile}){
-    .contct-short{
+    .contact-short{
         max-width: 80vw;
-        margin: 4.8rem 2.4rem auto;
+        margin-top: 2rem;
+        margin-bottom  auto;
         padding: 2rem 1rem;
         text-align: center;
+        justify-content: center;
+
+        .grid {
+            display: flex;        // Overriding grid layout for mobile view
+            flex-direction: column;
+            align-items: center;  // Centers content horizontally
+            justify-content: center; // Centers content vertically
+        }
 
         h3 {
             font-size: 1.4rem;
@@ -178,16 +192,33 @@ footer{
 
     footer{
         padding: 5rem 1rem;
-        h2, h3{
-            font-size: 1.6rem;
+        text-align: center;
+        h2{
+            font-size: 3rem;
+        }
+        h3 {
+            font-size: 1.7rem;
         }
         .p1, span, p {
             font-size: 1.6rem;
         }
+        .footer-subscribe {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+
+        }
+        
+
+        .footer-social--icons{
+            justify-content: center;
+
+        }
     }
 
     .footer-bottom--section{
-        padding-top: 4.8rem;
+        padding-top: 1rem;
     }
 }
 

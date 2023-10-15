@@ -33,6 +33,7 @@ const Wrapper = styled.section `
 
 padding: 5rem 0;
 background-color: ${({ theme }) => theme.colors.bg};
+margin-bottom: 5rem;
 
 .brand-section{
     padding: 12rem 0 0 0;
@@ -67,13 +68,15 @@ img {
 
 @media (max-width: ${({ theme }) => theme.media.mobile}) {
     img {
-        width: 8rem;  // Reduced size for smaller screens
+        width: 10rem;  // Reduced size for smaller screens
         height: 8rem;
     }
     
     .brand-section-slider {
+        align-items: center;
         justify-content: center;   // Center icons on smaller screens
-        gap: 1rem;   // Adjust the gap between logos for mobile view
+        gap: 2rem;   // Adjust the gap between logos for mobile view
+       
     }
 }
 `;

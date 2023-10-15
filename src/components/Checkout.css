@@ -4,6 +4,12 @@
     padding: 50px 180px;
 }
 
+@media screen and (max-width: 768px) {
+    .container-first {
+        padding: 20px 10px;
+    }
+}
+
 .heading1{
     display: flex; 
     flex-direction: column;
@@ -29,6 +35,16 @@
     width: 100%;
 }
 
+.buy-btn{
+    padding-bottom: 8rem;
+}
+
 .submit-btn{
     padding: 10px 40px;
+    margin-top: 5px;
+    display: block; /* Make button a block element so it takes full width */
+    margin-left: auto; /* Center align button */
+    margin-right: auto; 
+    max-width: 200px;
+     /* Optional: set a max width for the button */
 }

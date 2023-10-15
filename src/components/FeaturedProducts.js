@@ -15,7 +15,7 @@ const FeaturedProducts = () => {
     <Wrapper className="section">
       <div className="container">
         <div className="intro-data">Check Now</div>
-        <div className="common-heading">Our Feature Services</div>
+        <div className="common-heading">Our Best Selling Products</div>
         <div className="grid grid-three-column">
           {
             featuredProducts.map((curElem) => {
@@ -64,7 +64,7 @@ const Wrapper = styled.section`
     img {
       max-width: 90%;
       margin-top: 1.5rem;
-      height: 20rem;
+      height: 40rem;
       transition: all 0.2s linear;
     }
 
@@ -126,6 +126,30 @@ const Wrapper = styled.section`
       }
     }
   }
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    .container {
+      max-width: 100%; 
+      padding: 0; 
+    }
+    .intro-data{
+      text-align: center;
+    }
+    .common-heading{ 
+      text-align: center;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+    figure img {
+      max-width: 90%; 
+      height: 400px;
+    }
+  }
 `;
+
 
 export default FeaturedProducts;

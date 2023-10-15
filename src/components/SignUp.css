@@ -62,7 +62,9 @@
 
 .aldredy-user{
     display: flex;
-    /* padding-left: 230px; */
+    justify-content: center;  /* Align items horizontally to the center */
+    align-items: center;      /* Align items vertically to the center */
+    width: 100%;              /* Take full width of the parent container */
     margin-top: 27px;
     color: #4F4557;
     font-size: 18px;
@@ -78,5 +80,9 @@
 @media (max-width: 768px) { /* Adjust the breakpoint as needed */
     .right_data .sign_img img {
         display: none;
+    }
+
+    .aldredy-user {
+        font-size: 10px;
     }
 }
