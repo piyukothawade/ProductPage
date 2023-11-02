@@ -1,33 +1,35 @@
+import React from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { useProductContext } from "./Context/ProductContext";
+import ProductData from "./components/ProductData";
 import PageNavigation from "./components/PageNavigation";
-import { Container } from "./components/Container";
 import FormatPrice from "./Helpers/FormatPrice";
-import {FiCheckSquare} from "react-icons/fi";
-import {TbTruckDelivery} from "react-icons/tb";
-import {TbReplace} from "react-icons/tb";
-import {MdFaceRetouchingNatural} from "react-icons/md";
 import Star from "./components/Star";
-import AddToCart from "./components/AddToCart";
-
-//const API = "https://localhost:44320/api/Product";
-//const API = "http://localhost:5000/api/products";
-const API = "https://restapi-production-acb3.up.railway.app/api/products";
+import { Container } from "react-bootstrap";
+import { FiCheckSquare } from 'react-icons/fi';
+import { TbTruckDelivery } from 'react-icons/tb';
+import { TbReplace } from 'react-icons/tb';
+import { MdFaceRetouchingNatural } from 'react-icons/md';
 
 const breakpoints = {
-  mobile: '600px',
-  tablet: '900px',
-  desktop: '1200px',
-}
+  mobile: "600px",
+  tablet: "900px",
+  desktop: "1200px",
+};
 
 const SingleProduct = () => {
-  const {getSingleProduct, isSingleLoading, singleProduct} = useProductContext();
-  //console.log("~ file: SingleProduct.js ~ line 10 ~ SingleProduct ~ singleProduct",
-  //singleProduct
-  //);
   const { id } = useParams();
+
+
+  // Find the product with the matching ID in your ProductData
+  const productData = ProductData.find((product) => product.product_id === id);
+
+  console.log("id:", id);
+  console.log("productData:", productData);
+
+  if (!productData) {
+    return <div className="page_loading">Product not found</div>;
+  }
 
   const {
     product_id,
@@ -38,89 +40,78 @@ const SingleProduct = () => {
     size,
     color,
     weight,
-    price, 
+    price,
     category,
     image,
     reviews,
     rating,
     company,
-
-  } = singleProduct;
-
-  
-  useEffect(() =>{
-    getSingleProduct(`${API}/${id}`);
-
-  }, []);
-
-  if(isSingleLoading){
-    return <div className="page_loading">Loading....</div>
-  }
+  } = productData;
 
   return (
     <Wrapper>
-      <PageNavigation title={category}/>
+      <PageNavigation title={category} />
       <Container className="container">
         <div className="grid grid-two-column">
           <div className="product_image">
-            <img src={image} alt="Product Image" ></img>
+            <img src={image} alt="Product Image" />
           </div>
 
           <div className="product-data">
             <h2>{name}</h2>
-            <Star rating={rating} reviews={reviews}/>
-            
-            <p className="product-data-price">MRP:
-            <del>
-              <FormatPrice price={price + 500}/>
-            </del>
+            <Star rating={rating} reviews={reviews} />
+
+            <p className="product-data-price">
+              MRP:
+              <del>
+                <FormatPrice price={price + 500} />
+              </del>
             </p>
             <p className="product-data-price product-data-real-price">
-              Deal of the Day: <FormatPrice price={price}/>
+              Deal of the Day: <FormatPrice price={price} />
             </p>
             <p>{description}</p>
-            <p>color : <span>{color}</span></p>
+            <p>
+              color : <span>{color}</span>
+            </p>
 
             <div className="product-data-warranty">
               <div className="product-warranty-data">
-                <TbTruckDelivery className="warranty-icon"/>
+                <TbTruckDelivery className="warranty-icon" />
                 <p>Free Delivery</p>
               </div>
               <div className="product-warranty-data">
-                <TbReplace className="warranty-icon"/>
+                <TbReplace className="warranty-icon" />
                 <p>10 Days Replacement</p>
               </div>
-              
+
               <div className="product-warranty-data">
-                <FiCheckSquare className="warranty-icon"/>
+                <FiCheckSquare className="warranty-icon" />
                 <p>Best Quality</p>
-                
               </div>
               <div className="product-warranty-data">
-                <MdFaceRetouchingNatural className="warranty-icon"/>
+                <MdFaceRetouchingNatural className="warranty-icon" />
                 <p>No harm to skin</p>
-                
               </div>
             </div>
 
             <div className="product-data-info">
-                <p>Available: <span>{available_units > 0 ? "In Stock" : "Not Available"}</span></p>
-                <p> ID : <span>{product_id}</span></p>
-                <p> Company : <span>{company}</span></p>
-              </div>
-              <hr/>
-
-              
-
-              {available_units > 0 && <AddToCart product={singleProduct} />}
-            
-
+              <p>
+                Available: <span>{available_units > 0 ? "In Stock" : "Not Available"}</span>
+              </p>
+              <p>
+                ID : <span>{product_id}</span>
+              </p>
+              <p>
+                Company : <span>{company}</span>
+              </p>
+            </div>
+            <hr />
           </div>
         </div>
       </Container>
     </Wrapper>
   );
-
 };
 
 const Wrapper = styled.section`

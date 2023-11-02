@@ -2,34 +2,36 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Sort from "./components/Sort";
-import ProductList from "./components/ProductList";
 import FilterSection from "./components/FilterSection";
-import { useFilterContext } from "./Context/FilterContext";
+import ProductData from "./components/ProductData";
+import ProductList from "./components/ProductList"; // Import the ProductList component
 
 const Products = () => {
-  const { filter_products } = useFilterContext();
   const [showFilters, setShowFilters] = useState(false); // State to toggle filters
-  
+
   return (
     <Wrapper>
       <div className="container grid grid-filter-column">
         {/* Toggle Button */}
-        <button className="toggle-filters" onClick={() => setShowFilters(!showFilters)}>
-          {showFilters ? 'Hide Filters' : 'Show Filters'}
+        <button
+          className="toggle-filters"
+          onClick={() => setShowFilters(!showFilters)}
+        >
+          {showFilters ? "Hide Filters" : "Show Filters"}
         </button>
 
         {/* Filter Section */}
-        <div className={`filter-section ${showFilters ? 'show' : ''}`}>
-          <FilterSection/>
+        <div className={`filter-section ${showFilters ? "show" : ""}`}>
+          <FilterSection />
         </div>
 
         {/* Products Section */}
         <section className="product-view--sort">
           <div className="sort-filter">
-            <Sort/>
+            <Sort />
           </div>
           <div className="main-product">
-            <ProductList/>
+            <ProductList products={ProductData} /> {/* Pass ProductData to ProductList */}
           </div>
         </section>
       </div>

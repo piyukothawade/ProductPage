@@ -1,40 +1,35 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom';
-import FormatPrice from '../Helpers/FormatPrice';
-import styled from 'styled-components';
-import AddToCart from './AddToCart';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import FormatPrice from "../Helpers/FormatPrice";
+import styled from "styled-components";
 
 const Product = (curElem) => {
-    const { product_id, name, price, category, image} = curElem;
+  const {product_id, name, price, category, image} = curElem;
   return (
     <Wrapper>
-    <NavLink to={`/singleProduct/${product_id}`}>
+      <NavLink to={`/singleProduct/${product_id}`}>
         <div className="card">
-            <figure>
-                <img src={image} alt={name}/>
-                <figcaption className="caption">{category}</figcaption>
-            </figure>
+          <figure>
+            <img src={image} alt={name} />
+            <figcaption className="caption">{category}</figcaption>
+          </figure>
 
-            <div className="card-data">
-                <div className="card-data-flex">
-                    <h3>{name}</h3>
-                    
-                    <p className="card-data--price">{<FormatPrice price={price} /> }</p>
-                    
-                </div>
-                <div className='btnn'>
-                <AddToCart product={curElem} showControls={false} />
-                </div>
-                
-               
+          <div className="card-data">
+            <div className="card-data-flex">
+              <h3>{name}</h3>
+              <p className="card-data--price">
+                <FormatPrice price={price} />
+              </p>
             </div>
-
+          </div>
         </div>
-
-    </NavLink>
+      </NavLink>
     </Wrapper>
-  )
-}
+  );
+};
+
+
+
 
 const Wrapper = styled.section`
     width: 100%;

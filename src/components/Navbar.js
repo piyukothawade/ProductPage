@@ -3,9 +3,6 @@ import "./NavbarStyles.css";
 import { NavLink } from 'react-router-dom';
 import { FiShoppingCart } from "react-icons/fi";
 import LoginButton from "./LoginButton";
-import { useCartContext } from "../Context/CartContext";
-import { useLoginContext } from "../Context/LoginContext";
-import Login from "./Login";
 import { useNavigate } from 'react-router-dom';
 import { FaUserAlt } from 'react-icons/fa';
 
@@ -13,23 +10,13 @@ import { FaUserAlt } from 'react-icons/fa';
 
 function Navbar() {
     
-    const { isLoggedIn, setIsLoggedIn, user, setUser } = useLoginContext();
     const navigate = useNavigate();
     const [clicked, setClicked] = useState(false);
-    const { total_item } = useCartContext();
 
     const hideNavbar = () => {
         setClicked(false);
     }
 
-    // console.log("Is Logged In:", isLoggedIn);
-
-
-    const handleLogout = () => {
-        setIsLoggedIn(false);
-        setUser(null);
-        navigate('/');
-    };
 
     const handleClick = () => {
         setClicked(!clicked);
@@ -47,33 +34,17 @@ function Navbar() {
                         <li><NavLink to="/products" onClick={hideNavbar} activeClassName="active">Products</NavLink></li>
                         <li><NavLink to="/contact" onClick={hideNavbar} activeClassName="active">Contact</NavLink></li>
                         <li>
-                            <div className="name">
-
-                            {isLoggedIn && user && (
-                                <div>
-                                    <FaUserAlt className="user-icon"/>
-                                    {user.Fname} {user.Lname}
-                                </div>
-                            )}
-                            </div>
 
                             <div className="buttn">
-
-                                {isLoggedIn ? (
-                                    // Show Logout when user is logged in
-                                    <button className="loginBtn" onClick={handleLogout}>Logout</button>
-                                ) : (
-                                    // Show Login when user is not logged in
                                     <NavLink to="/login" onClick={hideNavbar} activeClassName="active">
                                         <LoginButton onClick={hideNavbar} className="normalBtn">Login</LoginButton>
                                     </NavLink>
-                                )}
+                                
                             </div>
                         </li>
                         <li>
                             <NavLink to="/cart" onClick={hideNavbar} className="navbar-link cart-trolley--link">
                                 <FiShoppingCart className="cart-trolley" />
-                                <span className="cart-total--item"> {total_item} </span>
                             </NavLink>
                         </li>
                     </ul>
